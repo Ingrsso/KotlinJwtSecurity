@@ -25,6 +25,7 @@ class SecurityConfig(
                 requests
                     .requestMatchers( "/","/swagger-ui/**", "/v3/api-docs/**").permitAll()
                     .requestMatchers("/auth/**").permitAll()
+                    .requestMatchers("/mail/**").authenticated()
                     .anyRequest().authenticated()
             }
 
@@ -51,7 +52,7 @@ class SecurityConfig(
             .addFilterBefore(jwtExceptionFilter, UsernamePasswordAuthenticationFilter::class.java)
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter::class.java)
         http.csrf { csrf ->
-            csrf.ignoringRequestMatchers("/auth/**") // Disable CSRF for auth endpoints
+           csrf.disable()
         }
 
         return http.build()

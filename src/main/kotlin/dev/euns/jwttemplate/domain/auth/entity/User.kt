@@ -14,4 +14,6 @@ class User {
 
     @Column
     var password: String? = null
+
+
 }

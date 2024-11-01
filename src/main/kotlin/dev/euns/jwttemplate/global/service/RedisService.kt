@@ -19,4 +19,12 @@ class RedisService(
     fun deleteRefreshToken(username: String) {
         redisTemplate.delete("refreshToken:$username")
     }
+
+    fun storeEmailVerifyCode(username: String, code: String) {
+        redisTemplate.opsForValue().set("verifyCode:$username", code, 5, TimeUnit.MINUTES)
+    }
+
+    fun getEmailVerifyCode(username: String): String? {
+        return redisTemplate.opsForValue().get("verifyCode:$username")
+    }
 }
