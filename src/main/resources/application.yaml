@@ -12,3 +12,13 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: <??? ???>
+    password: <??? ??? ??>
+    properties:
+      mail.smtp.debug: true
+      mail.smtp.connectiontimeout: 1000
+      mail.starttls.enable: true
+      mail.smtp.auth: true
