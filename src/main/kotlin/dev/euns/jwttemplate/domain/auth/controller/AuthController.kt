@@ -5,6 +5,7 @@ import dev.euns.jwttemplate.domain.auth.dto.request.AuthLogoutRequest
 import dev.euns.jwttemplate.domain.auth.dto.request.AuthRefreshRequest
 import dev.euns.jwttemplate.domain.auth.dto.request.AuthRegisterRequest
 import dev.euns.jwttemplate.domain.auth.dto.response.AuthLoginResponse
+import dev.euns.jwttemplate.domain.auth.entity.User
 import dev.euns.jwttemplate.domain.auth.service.AuthService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -15,7 +16,7 @@ class AuthController(
     private val authService: AuthService,
 ) {
     @PostMapping("/login")
-    fun login(@RequestBody authLoginRequest: AuthLoginRequest): AuthLoginResponse {
+    fun login(@RequestBody authLoginRequest: AuthLoginRequest): ResponseEntity<Any> {
         return authService.login(authLoginRequest)
     }
 
